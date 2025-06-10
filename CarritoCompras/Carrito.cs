@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CarritoCompras
 {
-    class Carrito
+    public class Carrito
     {
+        public List<ItemCarrito> Items { get; set; } = new List<ItemCarrito>();
     }
 }
