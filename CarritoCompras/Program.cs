@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace CarritoCompras
 {
@@ -19,6 +20,8 @@ namespace CarritoCompras
 
         static void Main(string[] args)
         {
+            Tienda tienda = new Tienda();
+
             bool salir = false;
             while (!salir)
             {
@@ -37,31 +40,55 @@ namespace CarritoCompras
 
                 string opcion = Console.ReadLine();
 
-                /*switch (opcion)
+                switch (opcion)
                 {
                     case "1":
-                        
+                        Console.Clear();
+                        tienda.CategoriasDisponibles();
+                        Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
+                        Console.ReadKey();
                         break;
                     case "2":
-                        
+                        Console.Clear();
+                        tienda.ProductosDisponibles();
+                        Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
+                        Console.ReadKey();
                         break;
                     case "3":
-                        
+                        Console.Clear();
+                        tienda.ProductosPorCategoria();
+                        Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
+                        Console.ReadKey();
                         break;
                     case "4":
-                        
+                        Console.Clear();
+                        tienda.CategoriasDisponibles();
+                        Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
+                        Console.ReadKey();
                         break;
                     case "5":
-                        
+                        Console.Clear();
+                        tienda.CategoriasDisponibles();
+                        Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
+                        Console.ReadKey();
                         break;
                     case "6":
-                        
+                        Console.Clear();
+                        tienda.CategoriasDisponibles();
+                        Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
+                        Console.ReadKey();
                         break;
                     case "7":
-                        
+                        Console.Clear();
+                        tienda.CategoriasDisponibles();
+                        Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
+                        Console.ReadKey();
                         break;
                     case "8":
-                        
+                        Console.Clear();
+                        tienda.CategoriasDisponibles();
+                        Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
+                        Console.ReadKey();
                         break;
                     case "9":
                         salir = true;
@@ -71,7 +98,7 @@ namespace CarritoCompras
                         Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
                         Console.ReadKey();
                         break;
-                }*/
+                }
             }
         }
     }
