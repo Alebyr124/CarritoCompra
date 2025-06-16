@@ -18,7 +18,7 @@ namespace CarritoCompras
             Console.WriteLine(arte);
         }
 
-        static void Main(string[] args)
+        static void Main()
         {
             Tienda tienda = new Tienda();
             Carrito carrito = new Carrito();
@@ -87,7 +87,7 @@ namespace CarritoCompras
                         break;
                     case "8":
                         Console.Clear();
-                        tienda.CategoriasDisponibles(tienda);
+                        tienda.FinalizarCompra(tienda, carrito);
                         Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
                         Console.ReadKey();
                         break;

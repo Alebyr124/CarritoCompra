@@ -30,7 +30,7 @@ namespace CarritoCompras
         {
             int codigoCategoria = 1;
             Console.WriteLine("Categorías disponibles:");
-            foreach (var categoria in tienda.Categorias)
+            foreach (Categoria categoria in tienda.Categorias)
             {
                 Console.WriteLine($"\n {codigoCategoria} - {categoria.Nombre}: {categoria.Descripcion}");
                 codigoCategoria++;
@@ -40,7 +40,7 @@ namespace CarritoCompras
         {
 
             Console.WriteLine("Productos disponibles:");
-            foreach (var producto in tienda.Productos)
+            foreach (Producto producto in tienda.Productos)
             {
                 Console.WriteLine($"\n * {producto.Nombre} - Precio: ${producto.Precio} - Stock: {producto.Stock} - Codigo: {producto.Codigo}");
             }
@@ -62,8 +62,28 @@ namespace CarritoCompras
             }
             else
             {
-                Console.WriteLine($"No se encontró la categoría");
+                Console.WriteLine($"No se encontró la categoría.");
             }
+        }
+        public void FinalizarCompra(Tienda tienda, Carrito carrito)
+        {
+            if (carrito.Items.Count == 0)
+            {
+                Console.WriteLine("\nEl carrito está vacío. No se puede finalizar la compra.");
+                return;
+            }
+
+            foreach (var item in carrito.Items)
+            {
+                var producto = tienda.Productos.FirstOrDefault(p => p.Codigo == item.Producto.Codigo);
+                if (producto != null)
+                {
+                    producto.Stock -= item.Cantidad;
+                }
+            }
+            Console.WriteLine("La transacción se a realizado correctamente.");
+            Console.WriteLine("\nGracias por su compra!");
+            carrito.Items.Clear();
         }
     }
 }

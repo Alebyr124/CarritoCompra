@@ -22,14 +22,14 @@ namespace CarritoCompras
             {
                 if (itemCarrito.Producto.Codigo == codigoProducto)
                 {
-                    if (itemCarrito.Producto.Stock >= cantidad)
+                    if (itemCarrito.Producto.Stock >= itemCarrito.Cantidad+cantidad)
                     {
                         itemCarrito.Cantidad += cantidad;
-                        Console.WriteLine($"\nProducto ha sido correctamente agregado al carrito");
+                        Console.WriteLine($"\nProducto ha sido correctamente agregado al carrito.");
                     }
                     else
                     {
-                        Console.WriteLine($"\nNo hay suficiente stock para el producto");
+                        Console.WriteLine($"\nNo hay suficiente stock para el producto.");
                     }
                     return;
                 }
@@ -46,7 +46,7 @@ namespace CarritoCompras
                     }
                     else
                     {
-                        Console.WriteLine($"\nNo hay suficiente stock para el producto");
+                        Console.WriteLine($"\nNo hay suficiente stock para el producto.");
                     }
                     return;
                 }
@@ -82,8 +82,9 @@ namespace CarritoCompras
                 {
                     Console.WriteLine("\nNo se puede eliminar más cantidad de la que hay en el carrito.");
                 }
-                carrito.Items.Remove(item);
+                return;
             }
+            Console.WriteLine($"\nNo se encontró el producto con el código {codigoProducto}.");
         }
 
         public void MostrarCarrito(Carrito carrito)
@@ -91,21 +92,40 @@ namespace CarritoCompras
             if (carrito.Items.Count == 0)
             {
                 Console.WriteLine("El carrito está vacío.");
+                return;
             }
-            else
+            Console.WriteLine("Contenido del carrito:\n");
+            foreach (ItemCarrito item in carrito.Items)
             {
-                Console.WriteLine("Contenido del carrito:");
-                foreach (var item in carrito.Items)
-                {
-                    Console.WriteLine($"\nProducto: {item.Producto.Nombre}, Cantidad: {item.Cantidad}, Precio unitario: {item.Producto.Precio}");
-                }
+                Console.WriteLine($"\n* {item.Producto.Nombre}, Cantidad: {item.Cantidad}, Precio unitario: ${item.Producto.Precio}");
             }
-            
+
         }
         public void CalcularTotal(Carrito carrito)
         {
-            double total = carrito.Items.Sum(i => i.Producto.Precio * i.Cantidad);
-            Console.WriteLine($"El total del carrito es: ${total}");
+            double total = 0;
+            double subtotal;
+
+            if (carrito.Items.Count == 0)
+            {
+                Console.WriteLine("El carrito está vacío.");
+                return;
+            }
+
+            Console.WriteLine("Total a pagar por los productos del carrito:\n");
+            foreach (ItemCarrito item in carrito.Items)
+            {
+                subtotal = item.Producto.Precio * item.Cantidad;
+                if (item.Cantidad >= 5)
+                {
+                    subtotal -= subtotal * 0.15;
+                }
+                subtotal += subtotal * 0.21;
+                Console.WriteLine($"\n* {item.Producto.Nombre}, Cantidad: {item.Cantidad}, Precio unitario: ${item.Producto.Precio}, SUBTOTAL ------ ${subtotal:F2}");
+                total += subtotal;
+            }
+
+            Console.WriteLine($"\n\nEl total del carrito es: ${total:F2}");
         }
     }
 }
