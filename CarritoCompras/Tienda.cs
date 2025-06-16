@@ -26,43 +26,43 @@ namespace CarritoCompras
             Productos.Add(new Producto { Codigo = 4, Nombre = "Sofá", Precio = 499.99, Stock = 20, Categoria = Categorias[2] });
         }
 
-        public void CategoriasDisponibles()
+        public void CategoriasDisponibles(Tienda tienda)
         {
             int codigoCategoria = 1;
             Console.WriteLine("Categorías disponibles:");
-            foreach (var categoria in Categorias)
+            foreach (var categoria in tienda.Categorias)
             {
                 Console.WriteLine($"\n {codigoCategoria} - {categoria.Nombre}: {categoria.Descripcion}");
                 codigoCategoria++;
             }
         }
-        public void ProductosDisponibles()
+        public void ProductosDisponibles(Tienda tienda)
         {
 
             Console.WriteLine("Productos disponibles:");
-            foreach (var producto in Productos)
+            foreach (var producto in tienda.Productos)
             {
-                Console.WriteLine($"\n * {producto.Nombre} - Precio: ${producto.Precio} - Stock: {producto.Stock}");
+                Console.WriteLine($"\n * {producto.Nombre} - Precio: ${producto.Precio} - Stock: {producto.Stock} - Codigo: {producto.Codigo}");
             }
         }
 
-        public void ProductosPorCategoria()
+        public void ProductosPorCategoria(Tienda tienda)
         {
-            CategoriasDisponibles();
-            Console.WriteLine("\nIngrese el numero de la categoría para filtrar los productos: ");
-            string nombreCategoria = Console.ReadLine();
-            var categoria = Categorias.FirstOrDefault(c => c.Nombre.Equals(nombreCategoria, StringComparison.OrdinalIgnoreCase));
-            if (categoria != null)
+            CategoriasDisponibles(tienda);
+            Console.Write("\nIngrese el numero de la categoría para filtrar los productos: ");
+            int idCategoria = int.Parse(Console.ReadLine());
+
+            if (tienda.Categorias[idCategoria-1] != null)
             {
-                Console.WriteLine($"Productos en la categoría {categoria.Nombre}:");
-                foreach (var producto in Productos.Where(p => p.Categoria.Nombre.Equals(nombreCategoria, StringComparison.OrdinalIgnoreCase)))
+                Console.WriteLine($"\nProductos en la categoría {tienda.Categorias[idCategoria - 1].Nombre}:");
+                foreach (var producto in Productos.Where(p => p.Categoria.Nombre == tienda.Categorias[idCategoria - 1].Nombre))
                 {
-                    Console.WriteLine($"\n * {producto.Nombre} - Precio: ${producto.Precio} - Stock: {producto.Stock}");
+                    Console.WriteLine($"\n * {producto.Nombre} - Precio: ${producto.Precio} - Stock: {producto.Stock} - Codigo: {producto.Codigo}");
                 }
             }
             else
             {
-                Console.WriteLine($"No se encontró la categoría: {nombreCategoria}");
+                Console.WriteLine($"No se encontró la categoría");
             }
         }
     }

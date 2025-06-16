@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ciro\\source\\repos\\CarritoCompra\\CarritoCompras\\CarritoCompras.csproj": {}
+    "C:\\Users\\Alexis\\Source\\Repos\\CarritoCompra\\CarritoCompras\\CarritoCompras.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ciro\\source\\repos\\CarritoCompra\\CarritoCompras\\CarritoCompras.csproj": {
+    "C:\\Users\\Alexis\\Source\\Repos\\CarritoCompra\\CarritoCompras\\CarritoCompras.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ciro\\source\\repos\\CarritoCompra\\CarritoCompras\\CarritoCompras.csproj",
+        "projectUniqueName": "C:\\Users\\Alexis\\Source\\Repos\\CarritoCompra\\CarritoCompras\\CarritoCompras.csproj",
         "projectName": "CarritoCompras",
-        "projectPath": "C:\\Users\\Ciro\\source\\repos\\CarritoCompra\\CarritoCompras\\CarritoCompras.csproj",
-        "packagesPath": "C:\\Users\\Ciro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ciro\\source\\repos\\CarritoCompra\\CarritoCompras\\obj\\",
+        "projectPath": "C:\\Users\\Alexis\\Source\\Repos\\CarritoCompra\\CarritoCompras\\CarritoCompras.csproj",
+        "packagesPath": "C:\\Users\\Alexis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Alexis\\Source\\Repos\\CarritoCompra\\CarritoCompras\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Ciro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Alexis\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

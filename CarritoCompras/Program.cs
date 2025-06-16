@@ -21,6 +21,7 @@ namespace CarritoCompras
         static void Main(string[] args)
         {
             Tienda tienda = new Tienda();
+            Carrito carrito = new Carrito();
 
             bool salir = false;
             while (!salir)
@@ -44,49 +45,49 @@ namespace CarritoCompras
                 {
                     case "1":
                         Console.Clear();
-                        tienda.CategoriasDisponibles();
+                        tienda.CategoriasDisponibles(tienda);
                         Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
                         Console.ReadKey();
                         break;
                     case "2":
                         Console.Clear();
-                        tienda.ProductosDisponibles();
+                        tienda.ProductosDisponibles(tienda);
                         Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
                         Console.ReadKey();
                         break;
                     case "3":
                         Console.Clear();
-                        tienda.ProductosPorCategoria();
+                        tienda.ProductosPorCategoria(tienda);
                         Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
                         Console.ReadKey();
                         break;
                     case "4":
                         Console.Clear();
-                        tienda.CategoriasDisponibles();
+                        carrito.AgregarProducto(tienda, carrito);
                         Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
                         Console.ReadKey();
                         break;
                     case "5":
                         Console.Clear();
-                        tienda.CategoriasDisponibles();
+                        carrito.EliminarProducto(carrito);
                         Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
                         Console.ReadKey();
                         break;
                     case "6":
                         Console.Clear();
-                        tienda.CategoriasDisponibles();
+                        carrito.MostrarCarrito(carrito);
                         Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
                         Console.ReadKey();
                         break;
                     case "7":
                         Console.Clear();
-                        tienda.CategoriasDisponibles();
+                        carrito.CalcularTotal(carrito);
                         Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
                         Console.ReadKey();
                         break;
                     case "8":
                         Console.Clear();
-                        tienda.CategoriasDisponibles();
+                        tienda.CategoriasDisponibles(tienda);
                         Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
                         Console.ReadKey();
                         break;
