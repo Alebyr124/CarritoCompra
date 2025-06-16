@@ -12,6 +12,7 @@ namespace CarritoCompras
     {
         public List<Producto> Productos { get; set; } = new List<Producto>();
         public List<Categoria> Categorias { get; set; } = new List<Categoria>();
+        public List<Ticket> Tickets { get; set; } = new List<Ticket>();
 
         public Tienda()
         {
@@ -60,13 +61,16 @@ namespace CarritoCompras
                     Console.WriteLine($"\n * {producto.Nombre} - Precio: ${producto.Precio} - Stock: {producto.Stock} - Codigo: {producto.Codigo}");
                 }
             }
+
             else
             {
                 Console.WriteLine($"No se encontró la categoría.");
             }
         }
+
         public void FinalizarCompra(Tienda tienda, Carrito carrito)
         {
+            string id = Guid.NewGuid().ToString();
             if (carrito.Items.Count == 0)
             {
                 Console.WriteLine("\nEl carrito está vacío. No se puede finalizar la compra.");
@@ -81,9 +85,57 @@ namespace CarritoCompras
                     producto.Stock -= item.Cantidad;
                 }
             }
+
+
+            tienda.Tickets.Add(new Ticket
+            {
+                Id = id,
+                Fecha = DateTime.Now,
+                Items = carrito.Items.Select(i => new ItemCarrito
+                {
+                    Producto = i.Producto,
+                    Cantidad = i.Cantidad
+                }).ToList(),
+                Total = carrito.CalcularTotal(carrito)
+            });
+
             Console.WriteLine("La transacción se a realizado correctamente.");
             Console.WriteLine("\nGracias por su compra!");
             carrito.Items.Clear();
+        }
+
+        public void HistorialCompras(Tienda tienda)
+        {
+            int numTicket = 1;
+            if (tienda.Tickets.Count == 0)
+            {
+                Console.WriteLine("No hay historial de compras.");
+                return;
+            }
+            Console.WriteLine("Historial de compras:");
+            foreach (var ticket in tienda.Tickets)
+            {
+                Console.WriteLine($"\n* Ticket {numTicket} - ID: {ticket.Id} - Fecha: {ticket.Fecha}");
+                numTicket++;
+            }
+        }
+
+        public void VerTicket(Tienda tienda)
+        {
+            Console.Write("Ingrese el ID del ticket que desea ver: ");
+            string idTicket = Console.ReadLine();
+            var ticket = tienda.Tickets.FirstOrDefault(t => t.Id == idTicket);
+            if (ticket != null)
+            {
+                Console.WriteLine($"\n\nTicket ID: {ticket.Id} - Fecha: {ticket.Fecha} - Total: ${ticket.Total:F2}");
+                Console.WriteLine("\nProductos comprados:");
+                foreach (var item in ticket.Items)
+                {
+                    Console.WriteLine($"\n* {item.Producto.Nombre} - Precio: ${item.Producto.Precio:F2} - Cantidad: {item.Cantidad}");
+                }
+                return;
+            }
+            Console.WriteLine("\nNo se encontró el ticket con el ID proporcionado.");
         }
     }
 }

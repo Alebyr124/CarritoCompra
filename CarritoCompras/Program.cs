@@ -35,8 +35,10 @@ namespace CarritoCompras
                 Console.WriteLine("5. Eliminar un producto del carrito");
                 Console.WriteLine("6. Contenido del carrito");
                 Console.WriteLine("7. Ver total a pagar");
-                Console.WriteLine("8. Finalizar compra");
-                Console.WriteLine("9. Salir");
+                Console.WriteLine("8. Historial de compras");
+                Console.WriteLine("9. Ver ticket");
+                Console.WriteLine("10. Finalizar compra");
+                Console.WriteLine("11. Salir");
                 Console.Write("\n\nSeleccione una opción: ");
 
                 string opcion = Console.ReadLine();
@@ -81,17 +83,29 @@ namespace CarritoCompras
                         break;
                     case "7":
                         Console.Clear();
-                        carrito.CalcularTotal(carrito);
+                        carrito.VerTotal(carrito);
                         Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
                         Console.ReadKey();
                         break;
                     case "8":
                         Console.Clear();
-                        tienda.FinalizarCompra(tienda, carrito);
+                        tienda.HistorialCompras(tienda);
                         Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
                         Console.ReadKey();
                         break;
                     case "9":
+                        Console.Clear();
+                        tienda.VerTicket(tienda);
+                        Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
+                        Console.ReadKey();
+                        break;
+                    case "10":
+                        Console.Clear();
+                        tienda.FinalizarCompra(tienda, carrito);
+                        Console.WriteLine("\n\nPresione cualquier tecla para continuar...");
+                        Console.ReadKey();
+                        break;
+                    case "11":
                         salir = true;
                         break;
                     default:

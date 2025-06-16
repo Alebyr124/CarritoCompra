@@ -101,7 +101,7 @@ namespace CarritoCompras
             }
 
         }
-        public void CalcularTotal(Carrito carrito)
+        public void VerTotal(Carrito carrito)
         {
             double total = 0;
             double subtotal;
@@ -126,6 +126,23 @@ namespace CarritoCompras
             }
 
             Console.WriteLine($"\n\nEl total del carrito es: ${total:F2}");
+        }
+        
+        public double CalcularTotal(Carrito carrito)
+        {
+            double total = 0;
+            double subtotal;
+            foreach (ItemCarrito item in carrito.Items)
+            {
+                subtotal = item.Producto.Precio * item.Cantidad;
+                if (item.Cantidad >= 5)
+                {
+                    subtotal -= subtotal * 0.15;
+                }
+                subtotal += subtotal * 0.21;
+                total += subtotal;
+            }
+            return total;
         }
     }
 }
